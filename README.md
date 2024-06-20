@@ -1,3 +1,5 @@
-﻿# ecommerce-app
+﻿ <h1>ecommerce-app</h1>
 
-#link: https://e-commerce-omega-brown.vercel.app/
+<h2>live link </h2>https://e-commerce-omega-brown.vercel.app/
+
+
