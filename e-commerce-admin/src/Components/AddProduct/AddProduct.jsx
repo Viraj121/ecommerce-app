@@ -37,7 +37,6 @@ const AddProduct = () => {
       product.image = dataObj.image_url;
       console.log(product);
       await fetch('https://ecommerce-app-backend-5hrm.onrender.com/addproduct', {
-<<<<<<< HEAD
         method: 'POST',
         headers: {
           Accept: 'application/json',
@@ -48,18 +47,6 @@ const AddProduct = () => {
         .then((resp) => resp.json())
         .then((data) => { data.success ? alert("Product Added") : alert("Failed") });
 
-=======
-      method: 'POST',
-      headers: {
-        Accept:'application/json',
-        'Content-Type':'application/json',
-      },
-      body: JSON.stringify(product),
-    })
-      .then((resp) => resp.json())
-      .then((data) => {data.success?alert("Product Added"):alert("Failed")});
-      
->>>>>>> a1d1e635e966b06dea691df3269efbec0d2a9b9f
     }
   }
 
