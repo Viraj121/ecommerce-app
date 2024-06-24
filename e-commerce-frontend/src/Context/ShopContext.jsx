@@ -17,6 +17,7 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
+<<<<<<< HEAD
     fetch('https://ecommerce-app-backend-5hrm.onrender.com/allproducts')
       .then((res) => res.json())
       .then((data) => setProducts(data))
@@ -33,6 +34,25 @@ const ShopContextProvider = (props) => {
       })
         .then((resp) => resp.json())
         .then((data) => { setCartItems(data) });
+=======
+    fetch('https://ecommerce-app-backend-5hrm.onrender.com/allproducts') 
+          .then((res) => res.json()) 
+          .then((data) => setProducts(data))
+
+    if(localStorage.getItem("auth-token"))
+    {
+      fetch('https://ecommerce-app-backend-5hrm.onrender.com/getcart', {
+      method: 'POST',
+      headers: {
+        Accept:'application/form-data',
+        'auth-token':`${localStorage.getItem("auth-token")}`,
+        'Content-Type':'application/json',
+      },
+      body: JSON.stringify(),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {setCartItems(data)});
+>>>>>>> a1d1e635e966b06dea691df3269efbec0d2a9b9f
     }
 
   }, [])
@@ -60,6 +80,7 @@ const ShopContextProvider = (props) => {
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
+<<<<<<< HEAD
     if (localStorage.getItem("auth-token")) {
       fetch('https://ecommerce-app-backend-5hrm.onrender.com/addtocart', {
         method: 'POST',
@@ -72,11 +93,27 @@ const ShopContextProvider = (props) => {
       })
         .then((resp) => resp.json())
         .then((data) => { console.log(data) });
+=======
+    if(localStorage.getItem("auth-token"))
+    {
+      fetch('https://ecommerce-app-backend-5hrm.onrender.com/addtocart', {
+      method: 'POST',
+      headers: {
+        Accept:'application/form-data',
+        'auth-token':`${localStorage.getItem("auth-token")}`,
+        'Content-Type':'application/json',
+      },
+      body: JSON.stringify({"itemId":itemId}),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {console.log(data)});
+>>>>>>> a1d1e635e966b06dea691df3269efbec0d2a9b9f
     }
   };
 
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
+<<<<<<< HEAD
     if (localStorage.getItem("auth-token")) {
       fetch('https://ecommerce-app-backend-5hrm.onrender.com/removefromcart', {
         method: 'POST',
@@ -89,6 +126,21 @@ const ShopContextProvider = (props) => {
       })
         .then((resp) => resp.json())
         .then((data) => { console.log(data) });
+=======
+    if(localStorage.getItem("auth-token"))
+    {
+      fetch('https://ecommerce-app-backend-5hrm.onrender.com/removefromcart', {
+      method: 'POST',
+      headers: {
+        Accept:'application/form-data',
+        'auth-token':`${localStorage.getItem("auth-token")}`,
+        'Content-Type':'application/json',
+      },
+      body: JSON.stringify({"itemId":itemId}),
+    })
+      .then((resp) => resp.json())
+      .then((data) => {console.log(data)});
+>>>>>>> a1d1e635e966b06dea691df3269efbec0d2a9b9f
     }
   };
 

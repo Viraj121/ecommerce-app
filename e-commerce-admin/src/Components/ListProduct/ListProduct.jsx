@@ -5,18 +5,31 @@ import cross_icon from '../Assets/cross_icon.png'
 const ListProduct = () => {
   const [allproducts, setAllProducts] = useState([]);
 
+<<<<<<< HEAD
   const fetchInfo = () => {
     fetch('https://ecommerce-app-backend-5hrm.onrender.com/allproducts')
       .then((res) => res.json())
       .then((data) => setAllProducts(data))
   }
+=======
+  const fetchInfo = () => { 
+    fetch('https://ecommerce-app-backend-5hrm.onrender.com/allproducts') 
+            .then((res) => res.json()) 
+            .then((data) => setAllProducts(data))
+    }
+>>>>>>> a1d1e635e966b06dea691df3269efbec0d2a9b9f
 
   useEffect(() => {
     fetchInfo();
   }, [])
 
+<<<<<<< HEAD
   const removeProduct = async (id) => {
     await fetch('https://ecommerce-app-backend-5hrm.onrender.com/removeproduct', {
+=======
+    const removeProduct = async (id) => {
+      await fetch('https://ecommerce-app-backend-5hrm.onrender.com/removeproduct', {
+>>>>>>> a1d1e635e966b06dea691df3269efbec0d2a9b9f
       method: 'POST',
       headers: {
         Accept: 'application/json',
@@ -25,9 +38,15 @@ const ListProduct = () => {
       body: JSON.stringify({ id: id }),
     })
 
+<<<<<<< HEAD
     fetch('https://ecommerce-app-backend-5hrm.onrender.com/allproducts')
       .then((res) => res.json())
       .then((data) => setAllProducts(data))
+=======
+    fetch('https://ecommerce-app-backend-5hrm.onrender.com/allproducts') 
+    .then((res) => res.json()) 
+    .then((data) => setAllProducts(data))
+>>>>>>> a1d1e635e966b06dea691df3269efbec0d2a9b9f
 
   }
 
