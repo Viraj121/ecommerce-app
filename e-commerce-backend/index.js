@@ -30,7 +30,7 @@ const upload = multer({ storage: storage });
 app.post("/upload", upload.single("product"), (req, res) => {
   res.json({
     success: 1,
-    image_url: `http://localhost:4000/images/${req.file.filename}`,
+    image_url: `https://ecommerce-app-backend-5hrm.onrender.com/images/${req.file.filename}`,
   });
 });
 app.use("/images", express.static("upload/images"));
@@ -106,7 +106,7 @@ const Product = mongoose.model("Product", {
 });
 
 app.get("/", (req, res) => {
-  res.send("Root");
+  res.send("Backend connected successfully");
 });
 
 //Create an endpoint at ip/login for login the user and giving auth-token
