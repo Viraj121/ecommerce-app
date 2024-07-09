@@ -17,23 +17,22 @@ const ShopContextProvider = (props) => {
   const [cartItems, setCartItems] = useState(getDefaultCart());
 
   useEffect(() => {
-    fetch('https://ecommerce-app-backend-5hrm.onrender.com/allproducts') 
-          .then((res) => res.json()) 
-          .then((data) => setProducts(data))
+    fetch('https://ecommerce-app-backend-5hrm.onrender.com/allproducts')
+      .then((res) => res.json())
+      .then((data) => setProducts(data))
 
-    if(localStorage.getItem("auth-token"))
-    {
+    if (localStorage.getItem("auth-token")) {
       fetch('https://ecommerce-app-backend-5hrm.onrender.com/getcart', {
-      method: 'POST',
-      headers: {
-        Accept:'application/form-data',
-        'auth-token':`${localStorage.getItem("auth-token")}`,
-        'Content-Type':'application/json',
-      },
-      body: JSON.stringify(),
-    })
-      .then((resp) => resp.json())
-      .then((data) => {setCartItems(data)});
+        method: 'POST',
+        headers: {
+          Accept: 'application/form-data',
+          'auth-token': `${localStorage.getItem("auth-token")}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(),
+      })
+        .then((resp) => resp.json())
+        .then((data) => { setCartItems(data) });
     }
   }, [])
 
@@ -60,37 +59,35 @@ const ShopContextProvider = (props) => {
 
   const addToCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] + 1 }));
-    if(localStorage.getItem("auth-token"))
-    {
+    if (localStorage.getItem("auth-token")) {
       fetch('https://ecommerce-app-backend-5hrm.onrender.com/addtocart', {
-      method: 'POST',
-      headers: {
-        Accept:'application/form-data',
-        'auth-token':`${localStorage.getItem("auth-token")}`,
-        'Content-Type':'application/json',
-      },
-      body: JSON.stringify({"itemId":itemId}),
-    })
-      .then((resp) => resp.json())
-      .then((data) => {console.log(data)});
+        method: 'POST',
+        headers: {
+          Accept: 'application/form-data',
+          'auth-token': `${localStorage.getItem("auth-token")}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ "itemId": itemId }),
+      })
+        .then((resp) => resp.json())
+        .then((data) => { console.log(data) });
     }
   };
 
   const removeFromCart = (itemId) => {
     setCartItems((prev) => ({ ...prev, [itemId]: prev[itemId] - 1 }));
-    if(localStorage.getItem("auth-token"))
-    {
+    if (localStorage.getItem("auth-token")) {
       fetch('https://ecommerce-app-backend-5hrm.onrender.com/removefromcart', {
-      method: 'POST',
-      headers: {
-        Accept:'application/form-data',
-        'auth-token':`${localStorage.getItem("auth-token")}`,
-        'Content-Type':'application/json',
-      },
-      body: JSON.stringify({"itemId":itemId}),
-    })
-      .then((resp) => resp.json())
-      .then((data) => {console.log(data)});
+        method: 'POST',
+        headers: {
+          Accept: 'application/form-data',
+          'auth-token': `${localStorage.getItem("auth-token")}`,
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ "itemId": itemId }),
+      })
+        .then((resp) => resp.json())
+        .then((data) => { console.log(data) });
     }
   };
 
